@@ -20,13 +20,17 @@ concurrency:
   group: "pages"
   cancel-in-progress: true
 
+# Environment variables
+env:
+  API_KEY: c89f97bcb4e931a6e41fc6678a34c6cb
+  MAIN_API_URL: https://api.themoviedb.org/3
+
 jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Delete content & directory
       - name: Checkout
         uses: actions/checkout@v3
       - name: Setup Pages
