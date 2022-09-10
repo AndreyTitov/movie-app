@@ -23,7 +23,7 @@ export const MainLayoutContainer = styled.div`
 `;
 
 export const Header = styled.div`
-  background: ${(props) => props.theme.colors.darkGrey};
+  background: ${(props) => props.theme.colors.white};
   color: ${(props) => props.theme.colors.mainBrandColor};
   position: absolute;
   width: 100%;
