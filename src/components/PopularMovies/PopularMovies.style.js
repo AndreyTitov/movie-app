@@ -22,7 +22,8 @@ export const PopularMovieWrapper = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8);
+    background: linear-gradient(180deg, #ee7752, #e73c7e, #23a6d5, #23d5ab 100%);
+    opacity: 0.4;
   }
 `;
 
@@ -80,8 +81,8 @@ export const MovieWrapper = styled.div`
       transform: translate(-50%, -50%);
       z-index: 1;
       opacity: 0.9;
-      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-      background-size: 400% 400%;
+      background: linear-gradient(-45deg, #90cea1, #0d253f, #01b4e4);
+      background-size: 100% 100%;
     }
     
     a {

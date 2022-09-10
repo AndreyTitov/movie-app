@@ -17,6 +17,12 @@ export const SearchBarInput = styled.input`
   font-size: 16px;
   box-sizing: border-box;
   outline: none;
+  border: 1px solid ${(props) => props.theme.colors.mainBrandColor};
+  color: ${(props) => props.theme.colors.mainBrandColor};
+  
+  &::placeholder {
+    color: ${(props) => props.theme.colors.mainBrandColor};
+  }
 `;
 
 export const FindedMoviesContainer = styled.div`
@@ -34,16 +40,25 @@ export const FindedMoviesListWrapper = styled.div`
 `;
 
 export const FindedMovie = styled.div`
-  color: ${(props) => props.theme.colors.darkPurple};
+  color: ${(props) => props.theme.colors.mainBrandColor};
   transition: all .5s ease;
   padding: 10px 20px;
   cursor: pointer;
-  width: 100%;
+  width: calc(100% - 40px);
   position: relative;
   background: white;
+  
+  a {
+    color: ${(props) => props.theme.colors.mainBrandColor};
+    text-decoration: none;
+    
+    &:hover {
+      color: ${(props) => props.theme.colors.white};;
+    }
+  }
 
   &:hover {
-    background: ${(props) => props.theme.colors.darkPurple};
-    color: ${(props) => props.theme.colors.green};
+    background: ${(props) => props.theme.colors.mainBrandColor};
+    color: ${(props) => props.theme.colors.white};
   }
 `;

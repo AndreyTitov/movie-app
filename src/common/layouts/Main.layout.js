@@ -37,7 +37,6 @@ const MainLayout = (props) => {
               <li><Link to={'/actors'}>Popular Actors</Link></li>
             </NavigationLinksList>
           </NavigationDesktopWrapper>
-          <button onClick={() => logout()}>Log out</button>
           <SearchBarWrapper>
             <SearchBarElement placeholder="Search movie" />
           </SearchBarWrapper>
