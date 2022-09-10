@@ -36,6 +36,8 @@ jobs:
           destination: ./_site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
+      - run: npm i --legacy-peer-deps
+      - run: npm run build
 
   # Deployment job
   deploy:
