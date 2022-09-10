@@ -11,6 +11,7 @@ const defaultTheme = {
     darkGrey: '#212121',
     greTwoOpacity: 'rgba(69, 69, 69, 0.5)',
     mainBrandColor: '#03D277',
+    backgroundColor: '#110b22',
   }
 };
 

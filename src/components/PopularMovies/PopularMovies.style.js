@@ -13,7 +13,7 @@ export const PopularMovieWrapper = styled.div`
   background-size: cover;
   position: relative;
   padding: 0 20px;
-  box-shadow: 0px 0px 50px 42px rgba(0, 0, 0, 0.64) inset;
+  box-shadow: 0px 0px 50px 42px ${(props) => props.theme.colors.backgroundColor} inset;
   
   &:before {
     content: '';
@@ -78,10 +78,10 @@ export const MovieWrapper = styled.div`
       width: 100%;
       height: 100%;
       transform: translate(-50%, -50%);
-      color: red;
-      background: ${(props) => props.theme.colors.darkPurple};
       z-index: 1;
       opacity: 0.9;
+      background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+      background-size: 400% 400%;
     }
     
     a {
@@ -140,7 +140,8 @@ export const MovieInfo = styled.div`
   padding: 20px;
   width: 100%;
   text-align: left;
-  background: ${(props) => props.theme.colors.greTwoOpacity};
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
   transition: all .5s ease;
   
   p {

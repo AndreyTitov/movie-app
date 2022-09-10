@@ -5,7 +5,21 @@
 import styled from 'styled-components';
 
 export const MainLayoutContainer = styled.div`
-  
+  background: linear-gradient(-45deg, #757373, #212121, #cf57f7, #57e7f7);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+
+  @keyframes gradientBG {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
 `;
 
 export const Header = styled.div`
@@ -49,6 +63,8 @@ export const NavigationLinksList = styled.ul`
   justify-content: flex-end;
   
   li {
+    margin-left: 10px;
+    
     a {
       color: ${(props) => props.theme.colors.mainBrandColor};
       text-decoration: none;

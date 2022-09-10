@@ -6,6 +6,7 @@ import PopularMovies from './components/PopularMovies/PopularMovies.view';
 import Home from './components/Home/Home.view';
 import Movie from './components/Movie/Movie.view';
 import Login from 'Login/Login.view';
+import PopularActors from './components/PopularActors/PopularActors.view';
 import PrivateRoute from 'common/routes/Private.route';
 
 function App () {
@@ -15,7 +16,8 @@ function App () {
         <Switch>
           <Route exact path={'/'} component={Home}/>
           <Route exact path={'/login'} component={Login}/>
-          <PrivateRoute exact path={'/movies'} component={PopularMovies}/>
+          <Route exact path={'/movies'} component={PopularMovies}/>
+          <Route exact path={'/actors'} component={PopularActors} />
           <Switch>
             <Route path={'/movies/:movieId'}>
               <Movie/>

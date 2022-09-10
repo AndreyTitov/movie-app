@@ -33,7 +33,8 @@ const MainLayout = (props) => {
           </LogoWrapper>
           <NavigationDesktopWrapper>
             <NavigationLinksList>
-              <li><Link to={'/movies'}>Popular ar Movies</Link></li>
+              <li><Link to={'/movies'}>Popular Movies</Link></li>
+              <li><Link to={'/actors'}>Popular Actors</Link></li>
             </NavigationLinksList>
           </NavigationDesktopWrapper>
           <button onClick={() => logout()}>Log out</button>
