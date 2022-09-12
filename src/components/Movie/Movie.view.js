@@ -28,20 +28,33 @@ import {
   CreditsWrapper,
   CastActorCardWrapper,
   CastActorCardImageWrapper,
+  CastActorInfo,
+  ImdbIcon,
+  BrowserIcon,
+  MovieTitle,
+  MovieTagline,
+  MovieDescription,
+  MoviesLinksTitle,
+  MoviesLinksContainer,
+  MovieContentWrapper,
 } from './Movie.style';
-import { IMAGE_URL } from '../../common/constants/api.constant';
-// import { ReactComponent as Imdb } from '../../common/assets/icons/imdb.svg';
-// import { ReactComponent as LinkIcon } from '../../common/assets/icons/linksvg.svg';
-import YoutubeIframe from '../../common/components/YoutubeIframe/YoutubeIframe';
-import { YOUTUBE_LINK } from '../../common/constants/video.constant';
-import Loader from '../../common/components/Loader/Loader';
-import CarouselElement from '../../common/components/CarouselElement/CarouselElement';
+import { IMAGE_URL } from 'common/constants/api.constant';
+import YoutubeIframe from 'common/components/YoutubeIframe/YoutubeIframe';
+import { YOUTUBE_LINK } from 'common/constants/video.constant';
+import CarouselElement from 'common/components/CarouselElement/CarouselElement';
 import NoActorAvatar from 'common/assets/icons/no-avatar.png';
+import SpinnerElement from 'common/components/SpinnerElement/SpinnerElement';
+import TooltipElement from 'common/components/TooltipElement/TooltipElement';
 
 const Movie = (props) => {
   const { moviesStore } = props;
 
   const { movieId } = useParams();
+
+  /**
+   * Loader flag.
+   */
+  const [isLoading, setIsLoading] = useState(false);
 
   /**
    * Movie data.
@@ -63,6 +76,7 @@ const Movie = (props) => {
    */
   useEffect(() => {
     (async () => {
+      setIsLoading(true);
       try {
         const data = await moviesStore.setMovieData(movieId);
         const credits = await moviesStore.setMovieCredits(movieId);
@@ -73,11 +87,80 @@ const Movie = (props) => {
         setTrailerLink(`${YOUTUBE_LINK}${movieVideos[0].key}`)
         setMovieData(data);
         setCreditsData(credits);
+        setIsLoading(false);
       } catch (e) {
         console.error(e);
+        setIsLoading(false);
       }
     })();
   }, [moviesStore, movieId]);
+
+  /**
+   * Render movie info.
+   */
+  const renderMovieInfo = () => {
+    return (
+      <>
+        <MovieTitle>{movieData.original_title}</MovieTitle>
+        {movieData.tagline && (
+          <MovieTagline>" {movieData.tagline} "</MovieTagline>
+        )}
+        <MovieDescription>{movieData.overview}</MovieDescription>
+        <MovieGenresWrapper>
+          <MovieGenresTitle>
+            Genres:
+          </MovieGenresTitle>
+          <MovieGenreWrapper>
+            {movieData.genres && movieData.genres.length && (
+              movieData.genres.map((genre) => (
+                <MovieGenre key={genre.name}>
+                  {genre.name}
+                </MovieGenre>
+              ))
+            )}
+          </MovieGenreWrapper>
+        </MovieGenresWrapper>
+        <MoviesLinksContainer>
+          <MoviesLinksTitle>Links:</MoviesLinksTitle>
+          <MoviesLinksWrapper>
+            <TooltipElement trigger="hover" placement="top" title="Visit movie page">
+              <a
+                href={movieData.homepage}
+                target="_blank"
+              >
+                <BrowserIcon/>
+              </a>
+            </TooltipElement>
+            <TooltipElement trigger="hover" placement="top" title="Visit movie in IMdB">
+              <a
+                href={`https://www.imdb.com/title/${movieData.imdb_id}I?&autoplay=1`}
+                target="_blank"
+              >
+                <ImdbIcon/>
+              </a>
+            </TooltipElement>
+          </MoviesLinksWrapper>
+        </MoviesLinksContainer>
+      </>
+    )
+  };
+
+  /**
+   * Render movie poster.
+   */
+  const renderMoviePoster = () => {
+    return (
+      <MoviePosterWrapper>
+        {movieData.poster_path && <img src={`${IMAGE_URL}${movieData.poster_path}`} alt=""/>}
+        <MovieAverageRateWrapper>
+          Average rate
+          <MovieAverageRate>
+            {movieData.vote_average}
+          </MovieAverageRate>
+        </MovieAverageRateWrapper>
+      </MoviePosterWrapper>
+    )
+  };
 
   /**
    * Render movie credit.
@@ -87,75 +170,67 @@ const Movie = (props) => {
       <CreditsContainer>
         <CreditsTitle>Actors</CreditsTitle>
         <CreditsWrapper>
-          {creditsData ? (
+          {creditsData && (
             <CastActorCardWrapper>
               {creditsData && (
                 <CarouselElement>
                   {creditsData.cast.map((actor) => (
-                    <CastActorCardWrapper>
+                    <CastActorCardWrapper key={actor.profile_path}>
                       <CastActorCardImageWrapper>
                         <img src={actor.profile_path ? `${IMAGE_URL}${actor.profile_path}` : NoActorAvatar} alt=""/>
                       </CastActorCardImageWrapper>
-                      <p>{actor.name}</p>
-                      <p>{actor.character}</p>
+                      <CastActorInfo>
+                        <p>{actor.name}</p>
+                        <p>{actor.character}</p>
+                      </CastActorInfo>
                     </CastActorCardWrapper>
                   ))}
                 </CarouselElement>
               )}
             </CastActorCardWrapper>
-          ) : (
-            <Loader />
           )}
         </CreditsWrapper>
       </CreditsContainer>
     )
   };
 
+  /**
+   * Render trailer info.
+   */
+  const renderTrailerInfo = () => {
+    return (
+      <MovieTrailerWrapper>
+        <MovieTrailerTitle>Trailer</MovieTrailerTitle>
+        <MovieTrailer>
+          {trailerLink && <YoutubeIframe height={600} src={trailerLink}/>}
+        </MovieTrailer>
+      </MovieTrailerWrapper>
+    )
+  };
+
   return (
     <MainLayout>
       <MovieContainer>
-        <MovieTopWrapper>
-          <MovieTopLeftColumn>
-            <h3>{movieData.original_title}</h3>
-            <p>{movieData.overview}</p>
-            <MovieGenresWrapper>
-              <MovieGenresTitle>
-                Genres:
-              </MovieGenresTitle>
-              <MovieGenreWrapper>
-                {movieData.genres && movieData.genres.length && (
-                  movieData.genres.map((genre) => (
-                    <MovieGenre key={genre.name}>
-                      {genre.name}
-                    </MovieGenre>
-                  ))
-                )}
-              </MovieGenreWrapper>
-            </MovieGenresWrapper>
-            <MoviesLinksWrapper>
-              <a href={movieData.homepage}>Movie link</a>
-              <a href={`https://www.imdb.com/title/${movieData.imdb_id}I?&autoplay=1`}>Imdb</a>
-            </MoviesLinksWrapper>
-          </MovieTopLeftColumn>
-          <MovieTopRightColumn>
-            <MoviePosterWrapper>
-              {movieData.poster_path && <img src={`${IMAGE_URL}${movieData.poster_path}`} alt=""/>}
-            </MoviePosterWrapper>
-            <MovieAverageRateWrapper>
-              Average rate
-              <MovieAverageRate>
-                {movieData.vote_average}
-              </MovieAverageRate>
-            </MovieAverageRateWrapper>
-          </MovieTopRightColumn>
-        </MovieTopWrapper>
-        {renderCredits()}
-        <MovieTrailerWrapper>
-          <MovieTrailerTitle>Trailer</MovieTrailerTitle>
-          <MovieTrailer>
-            {trailerLink && <YoutubeIframe height={400} src={trailerLink}/>}
-          </MovieTrailer>
-        </MovieTrailerWrapper>
+        {(!isLoading && Object.keys(movieData).length) ? (
+          <>
+            <MovieTopWrapper background={`${IMAGE_URL}${movieData.backdrop_path}`}>
+              <MovieContentWrapper>
+                <MovieTopLeftColumn>
+                  {renderMovieInfo()}
+                </MovieTopLeftColumn>
+                <MovieTopRightColumn>
+                  {renderMoviePoster()}
+                </MovieTopRightColumn>
+              </MovieContentWrapper>
+            </MovieTopWrapper>
+
+            {renderCredits()}
+
+            {renderTrailerInfo()}
+          </>
+        ) : (
+          <SpinnerElement/>
+        )}
       </MovieContainer>
     </MainLayout>
   )

@@ -5,10 +5,12 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyles = createGlobalStyle`
-  body {
+  html, body {
     font-family: 'Dosis', sans-serif;
     color: black;
-    background: ${(props) => props.theme.colors.darkPurple};
+    background: ${(props) => props.theme.colors.mainBrandColor};
+    margin: 0;
+    padding: 0;
   }
   
   h3 {
@@ -34,6 +36,12 @@ export const GlobalStyles = createGlobalStyle`
   
   div {
     color: white;
+  }
+
+  .ant-tooltip-inner {
+    min-height: 20px;
+    background-color: ${(props) => props.theme.colors.backgroundColor};
+    color: ${(props) => props.theme.colors.mainBrandColor};
   }
 `;
 

@@ -5,6 +5,7 @@
 import styled from 'styled-components';
 
 export const PopularMovieContainer = styled.div`
+  min-height: 100vh;
 `;
 
 export const PopularMovieWrapper = styled.div`
@@ -13,7 +14,6 @@ export const PopularMovieWrapper = styled.div`
   background-size: cover;
   position: relative;
   padding: 0 20px;
-  box-shadow: 0px 0px 50px 42px ${(props) => props.theme.colors.backgroundColor} inset;
   
   &:before {
     content: '';
@@ -22,8 +22,18 @@ export const PopularMovieWrapper = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(180deg, #ee7752, #e73c7e, #23a6d5, #23d5ab 100%);
+    background: linear-gradient(180deg, ${(props) => props.theme.colors.mainBrandColor}, ${(props) => props.theme.colors.backgroundColor}, ${(props) => props.theme.colors.mainBrandSecondaryColor} 100%);
     opacity: 0.4;
+  }
+  
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(transparent, ${(props) => props.theme.colors.backgroundColor});
   }
 `;
 
@@ -34,7 +44,11 @@ export const PopularMovieDescriptionWrapper = styled.div`
   transform: translate(-50%, -50%);
   color: white;
   text-align: center;
-  min-width: 700px;
+  width: 100%;
+  
+  @media (min-width: 992px) {
+    min-width: 700px;
+  }
   
   h3 {
     font-size: 64px;
@@ -56,12 +70,13 @@ export const MoviesCol = styled.div`
 `;
 
 export const PopularMoviesContainer = styled.div`
-  padding: 80px 0;
+  padding: 80px 20px;
   position: relative;
   
-  @media (min-width: 1300px) {
+  @media (min-width: 1400px) {
     max-width: 1200px;
     margin: 0 auto;
+    padding: 80px 0;
   }
 `;
 
@@ -70,8 +85,21 @@ export const MovieWrapper = styled.div`
   overflow: hidden;
   position: relative;
   
+  &:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    opacity: 0;
+    transition: all .5s ease;
+  }
+  
   &:hover {
-    &:Before {
+    &:before {
       content: '';
       position: absolute;
       top: 50%;
@@ -80,14 +108,20 @@ export const MovieWrapper = styled.div`
       height: 100%;
       transform: translate(-50%, -50%);
       z-index: 1;
-      opacity: 0.9;
-      background: linear-gradient(-45deg, #90cea1, #0d253f, #01b4e4);
+      opacity: 1;
+      background: linear-gradient(-45deg, ${(props) => props.theme.colors.mainBrandColor}, ${(props) => props.theme.colors.backgroundColor}, ${(props) => props.theme.colors.mainBrandSecondaryColor});
       background-size: 100% 100%;
     }
     
     a {
       display: block;
       opacity: 1;
+      color: ${(props) => props.theme.colors.white};
+      transition: all .5s ease;
+      
+      &:hover {
+        color: ${(props) => props.theme.colors.mainBrandColor};
+      }
     }
   }
   
@@ -141,8 +175,7 @@ export const MovieInfo = styled.div`
   padding: 20px;
   width: 100%;
   text-align: left;
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
+  background: linear-gradient(-45deg, ${(props) => props.theme.colors.mainBrandColor}, ${(props) => props.theme.colors.mainBrandSecondaryColor});
   transition: all .5s ease;
   
   p {

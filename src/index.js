@@ -8,7 +8,6 @@ import themes from './themes';
 import GlobalStyles from './globalStyles/globalStyles';
 import * as serviceWorker from './serviceWorker';
 import { Auth0Provider } from '@auth0/auth0-react';
-import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <Auth0Provider
@@ -17,6 +16,7 @@ ReactDOM.render(
     redirectUri={'https://wallet.armenotech.dev/'}
   >
     <ThemeProvider theme={themes.default}>
+      <GlobalStyles />
       <MobxProvider {...stores}>
         <GlobalStyles/>
         <App/>

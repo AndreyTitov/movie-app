@@ -21,12 +21,12 @@ import {
 } from './PopularMovies.style';
 import { inject } from 'mobx-react';
 import { compose } from 'recompose';
-import { Spin } from 'antd';
 import { IMAGE_URL } from '../../common/constants/api.constant';
 import Loader from '../../common/components/Loader/Loader';
 import MoviesService from '../../common/services/movies.service';
 import NoPoster from 'common/assets/icons/no-poster.png';
 import InfiniteScroll from 'react-infinite-scroller';
+import SpinnerElement from 'common/components/SpinnerElement/SpinnerElement';
 
 const PopularMovies = (props) => {
 
@@ -80,23 +80,23 @@ const PopularMovies = (props) => {
             <PopularMoviesWrapper>
               {popularMovies.map((movie, index) => (
                 <MoviesCol key={movie.id * index}>
-                    <MovieWrapper background={movie.poster_path ? `${IMAGE_URL}${movie.poster_path}` : NoPoster}>
-                      <img src={movie.poster_path ? `${IMAGE_URL}${movie.poster_path}` : NoPoster} alt=""/>
-                      <MovieMoreInfo>
-                        More Info
-                      </MovieMoreInfo>
-                      <MovieInfo>
-                        <p>{movie.title}</p>
-                        <p>Rate: {movie.vote_average}</p>
-                      </MovieInfo>
-                      <Link to={`${url}/${movie.id}`}>See more</Link>
-                    </MovieWrapper>
+                  <MovieWrapper background={movie.poster_path ? `${IMAGE_URL}${movie.poster_path}` : NoPoster}>
+                    <img src={movie.poster_path ? `${IMAGE_URL}${movie.poster_path}` : NoPoster} alt=""/>
+                    <MovieMoreInfo>
+                      More Info
+                    </MovieMoreInfo>
+                    <MovieInfo>
+                      <p>{movie.title}</p>
+                      <p>Rate: {movie.vote_average}</p>
+                    </MovieInfo>
+                    <Link to={`${url}/${movie.id}`}>See more</Link>
+                  </MovieWrapper>
                 </MoviesCol>
               ))}
             </PopularMoviesWrapper>
           )}
         </MoviesRow>
-        {loading && <Loader />}
+        {loading && <Loader/>}
         <Button onClick={loadMoreMoviesHandler}>Load more</Button>
       </PopularMoviesContainer>
     )
@@ -111,19 +111,23 @@ const PopularMovies = (props) => {
 
   return (
     <MainLayout>
-      <Spin spinning={loading}>
-        <PopularMovieContainer>
-          {popularMovies.length && (
-            <PopularMovieWrapper background={`${IMAGE_URL}${popularMovies[0].backdrop_path}`}>
-              <PopularMovieDescriptionWrapper>
-                <h3>{popularMovies[0].title}</h3>
-                <p>{popularMovies[0].overview}</p>
-              </PopularMovieDescriptionWrapper>
-            </PopularMovieWrapper>
-          )}
-          {renderPopularMovies()}
-        </PopularMovieContainer>
-      </Spin>
+      <PopularMovieContainer>
+        {popularMovies.length ? (
+          <>
+            {popularMovies.length && (
+              <PopularMovieWrapper background={`${IMAGE_URL}${popularMovies[0].backdrop_path}`}>
+                <PopularMovieDescriptionWrapper>
+                  <h3>{popularMovies[0].title}</h3>
+                  <p>{popularMovies[0].overview}</p>
+                </PopularMovieDescriptionWrapper>
+              </PopularMovieWrapper>
+            )}
+            {renderPopularMovies()}
+          </>
+        ) : (
+          <SpinnerElement />
+        )}
+      </PopularMovieContainer>
     </MainLayout>
   )
 };

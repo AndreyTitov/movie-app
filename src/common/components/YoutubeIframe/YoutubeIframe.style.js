@@ -5,5 +5,6 @@
 import styled from 'styled-components';
 
 export const YoutubeIframeWrapper = styled.div`
-  height: 720px;
+  min-height: 460px;
+  height: 460px;
 `;

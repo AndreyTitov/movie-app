@@ -8,6 +8,10 @@ import 'react-multi-carousel/lib/styles.css';
 
 export const MultiCarousel = styled(Carousel)`
   .react-multi-carousel-item {
+    
+  }
+  
+  .react-multi-carousel-item {
     margin-right: 20px;
   }
 

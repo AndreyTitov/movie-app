@@ -2,7 +2,7 @@
  * @file
  * Contains search bar element.
  */
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { compose } from 'recompose';
 import { inject } from 'mobx-react';
@@ -12,14 +12,23 @@ import {
   FindedMoviesListWrapper,
   FindedMovie,
   FindedMoviesContainer,
+  SearchBarIconWrapper,
+  SearchIcon,
 } from './SearchBarElement.style';
 
 const SearchBarElement = (props) => {
   const { moviesStore, getRef, ...rest } = props; // excluded getRef prop. DO NOT DELETE!!!
 
+  const ref = useRef();
+
   const [findedMovies, setFindedMovies] = useState([]);
 
   const [showResults, setShowResults] = useState(false);
+
+  /**
+   * Show search bar input.
+   */
+  const [showSearchBar, setShowSearchBar] = useState(false);
 
   /**
    * Ref to input.
@@ -53,7 +62,7 @@ const SearchBarElement = (props) => {
           <FindedMoviesListWrapper>
             {findedMovies.map((movie) => (
               <FindedMovie key={movie.id}>
-                <Link to={`/movies/${movie.id}`}>
+                <Link onClick={() => setShowResults(false)} to={`/movies/${movie.id}`}>
                   {movie.original_title}
                 </Link>
               </FindedMovie>
@@ -68,6 +77,16 @@ const SearchBarElement = (props) => {
     // setShowResults(false);
   };
 
+  /**
+   * Toggle search bar input.
+   */
+  const toggleSearchBarHandler = () => {
+    setShowSearchBar(!showSearchBar);
+    setFindedMovies([]);
+    const { current } = ref;
+    current.value = '';
+  };
+
   return (
     <SearchBarInputWrapper {...rest}>
       <SearchBarInput
@@ -75,8 +94,13 @@ const SearchBarElement = (props) => {
         {...rest}
         onChange={(e) => findMovie(e)}
         onBlur={onBlur}
+        showSearchBar={showSearchBar}
+        ref={ref}
       />
       {renderFindedMovies()}
+      <SearchBarIconWrapper onClick={() => toggleSearchBarHandler()}>
+        <SearchIcon showSearchBar={showSearchBar} />
+      </SearchBarIconWrapper>
     </SearchBarInputWrapper>
   )
 };

@@ -8,16 +8,18 @@ import Movie from './components/Movie/Movie.view';
 import Login from 'Login/Login.view';
 import PopularActors from './components/PopularActors/PopularActors.view';
 import PrivateRoute from 'common/routes/Private.route';
+import ScrollToTop from 'common/components/Navigator/SrollTop';
 
 function App () {
   return (
     <BrowserRouter>
       <Suspense fallback={<Loader/>}>
+        <ScrollToTop />
         <Switch>
           <Route exact path={'/'} component={Home}/>
           <Route exact path={'/login'} component={Login}/>
           <Route exact path={'/movies'} component={PopularMovies}/>
-          <Route exact path={'/actors'} component={PopularActors} />
+          <Route exact path={'/actors'} component={PopularActors}/>
           <Switch>
             <Route path={'/movies/:movieId'}>
               <Movie/>

@@ -11,7 +11,7 @@ export const HomeContainer = styled.div`
 export const HomeHeroSection = styled.div`
   height: calc(100vh - 200px);
   width: 100%;
-  padding: 100px 20px;
+  padding: 100px 0;
   color: white;
   background: url(${(props) => props.background}) center center no-repeat;
   background-size: cover;
@@ -34,6 +34,25 @@ export const HomeHeroSection = styled.div`
     background: rgba(0,0,0,0.7);
     z-index: 2;
   }
+
+  @media (min-width: 576px) {
+  }
+
+  @media (min-width: 768px) {
+  }
+
+  @media (min-width: 992px) {
+    padding: 100px 20px;
+  }
+
+  @media (min-width: 1200px) {
+  }
+
+  @media (min-width: 1400px) {
+  }
+
+  @media (min-width: 1900px) {
+  }
 `;
 
 export const HomeHeroDescriptionContainer = styled.div`
@@ -49,12 +68,21 @@ export const HomeHeroTitle = styled.h3`
   font-weight: 900;
   color: ${(props) => props.theme.colors.white};
   text-transform: uppercase;
-  font-size: 46px;
+  font-size: 30px;
+  
+  @media (min-width: 992px) {
+    font-size: 46px;
+  }
 `;
 
 export const HomeHeroSubTitle = styled.div`
   color: ${(props) => props.theme.colors.mainBrandColor};
-  font-size: 24px;
+  font-size: 18px;
+
+
+  @media (min-width: 992px) {
+    font-size: 24px;
+  }
   
   a {
     color: ${(props) => props.theme.colors.white};
