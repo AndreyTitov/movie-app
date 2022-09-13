@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.js": "/movie-app/static/js/main.797bf6c0.chunk.js",
-    "main.js.map": "/movie-app/static/js/main.797bf6c0.chunk.js.map",
-    "runtime-main.js": "/movie-app/static/js/runtime-main.b355dd59.js",
-    "runtime-main.js.map": "/movie-app/static/js/runtime-main.b355dd59.js.map",
-    "static/css/2.d36a8d36.chunk.css": "/movie-app/static/css/2.d36a8d36.chunk.css",
-    "static/js/2.9321fa3d.chunk.js": "/movie-app/static/js/2.9321fa3d.chunk.js",
-    "static/js/2.9321fa3d.chunk.js.map": "/movie-app/static/js/2.9321fa3d.chunk.js.map",
-    "index.html": "/movie-app/index.html",
-    "static/css/2.d36a8d36.chunk.css.map": "/movie-app/static/css/2.d36a8d36.chunk.css.map",
-    "static/js/2.9321fa3d.chunk.js.LICENSE.txt": "/movie-app/static/js/2.9321fa3d.chunk.js.LICENSE.txt",
-    "static/media/home-background.18fe30f7.jpeg": "/movie-app/static/media/home-background.18fe30f7.jpeg",
-    "static/media/logo.de1a664e.svg": "/movie-app/static/media/logo.de1a664e.svg",
-    "static/media/styles.css": "/movie-app/static/media/revicons.e8746a62.woff"
+    "main.js": "/movie-app/build/static/js/main.da346ac7.chunk.js",
+    "main.js.map": "/movie-app/build/static/js/main.da346ac7.chunk.js.map",
+    "runtime-main.js": "/movie-app/build/static/js/runtime-main.a9311d93.js",
+    "runtime-main.js.map": "/movie-app/build/static/js/runtime-main.a9311d93.js.map",
+    "static/css/2.d8a96a35.chunk.css": "/movie-app/build/static/css/2.d8a96a35.chunk.css",
+    "static/js/2.36fbe488.chunk.js": "/movie-app/build/static/js/2.36fbe488.chunk.js",
+    "static/js/2.36fbe488.chunk.js.map": "/movie-app/build/static/js/2.36fbe488.chunk.js.map",
+    "index.html": "/movie-app/build/index.html",
+    "static/css/2.d8a96a35.chunk.css.map": "/movie-app/build/static/css/2.d8a96a35.chunk.css.map",
+    "static/js/2.36fbe488.chunk.js.LICENSE.txt": "/movie-app/build/static/js/2.36fbe488.chunk.js.LICENSE.txt",
+    "static/media/home-background.18fe30f7.jpeg": "/movie-app/build/static/media/home-background.18fe30f7.jpeg",
+    "static/media/logo.de1a664e.svg": "/movie-app/build/static/media/logo.de1a664e.svg",
+    "static/media/styles.css": "/movie-app/build/static/media/revicons.e8746a62.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.b355dd59.js",
-    "static/css/2.d36a8d36.chunk.css",
-    "static/js/2.9321fa3d.chunk.js",
-    "static/js/main.797bf6c0.chunk.js"
+    "static/js/runtime-main.a9311d93.js",
+    "static/css/2.d8a96a35.chunk.css",
+    "static/js/2.36fbe488.chunk.js",
+    "static/js/main.da346ac7.chunk.js"
   ]
 }
