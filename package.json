@@ -2,7 +2,7 @@
   "name": "movie-tmdb",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://andreytitov.github.io/movie-app/build/",
+  "homepage": "https://andreytitov.github.io/movie-app/",
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
     "@auth0/auth0-react": "^1.10.2",
