@@ -19,6 +19,11 @@ export const HomeHeroSection = styled.div`
   z-index: 1;
   box-shadow: 0px 0px 50px 42px rgba(0, 0, 0, 0.6) inset;
   
+  iframe {
+    position: relative;
+    z-index: 999;
+  }
+  
   &:before {
     content: '';
     position: absolute;

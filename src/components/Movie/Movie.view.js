@@ -27,7 +27,7 @@ import {
   CreditsTitle,
   CreditsWrapper,
   CastActorCardWrapper,
-  CastActorCard,
+  CastActorCardImageWrapper,
 } from './Movie.style';
 import { IMAGE_URL } from '../../common/constants/api.constant';
 // import { ReactComponent as Imdb } from '../../common/assets/icons/imdb.svg';
@@ -35,8 +35,7 @@ import { IMAGE_URL } from '../../common/constants/api.constant';
 import YoutubeIframe from '../../common/components/YoutubeIframe/YoutubeIframe';
 import { YOUTUBE_LINK } from '../../common/constants/video.constant';
 import Loader from '../../common/components/Loader/Loader';
-import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import CarouselElement from '../../common/components/CarouselElement/CarouselElement';
 import NoActorAvatar from 'common/assets/icons/no-avatar.png';
 
 const Movie = (props) => {
@@ -90,22 +89,19 @@ const Movie = (props) => {
         <CreditsWrapper>
           {creditsData ? (
             <CastActorCardWrapper>
-              <Carousel
-                axis="horizontal"
-                emulateTouch={true}
-                showThumbs={false}
-                showIndicators={false}
-                showStatus={false}
-                dynamicHeight={true}
-                centerMode={true}
-              >
+              {creditsData && (
+                <CarouselElement>
                   {creditsData.cast.map((actor) => (
-                    <CastActorCard key={actor.id}>
-                      <img src={IMAGE_URL ? `${IMAGE_URL}${actor.profile_path}` : NoActorAvatar} alt={actor.name} />
-                      {actor.name}
-                    </CastActorCard>
+                    <CastActorCardWrapper>
+                      <CastActorCardImageWrapper>
+                        <img src={actor.profile_path ? `${IMAGE_URL}${actor.profile_path}` : NoActorAvatar} alt=""/>
+                      </CastActorCardImageWrapper>
+                      <p>{actor.name}</p>
+                      <p>{actor.character}</p>
+                    </CastActorCardWrapper>
                   ))}
-              </Carousel>
+                </CarouselElement>
+              )}
             </CastActorCardWrapper>
           ) : (
             <Loader />

@@ -25,6 +25,8 @@ import { Spin } from 'antd';
 import { IMAGE_URL } from '../../common/constants/api.constant';
 import Loader from '../../common/components/Loader/Loader';
 import MoviesService from '../../common/services/movies.service';
+import NoPoster from 'common/assets/icons/no-poster.png';
+import InfiniteScroll from 'react-infinite-scroller';
 
 const PopularMovies = (props) => {
 
@@ -78,8 +80,8 @@ const PopularMovies = (props) => {
             <PopularMoviesWrapper>
               {popularMovies.map((movie, index) => (
                 <MoviesCol key={movie.id * index}>
-                    <MovieWrapper background={`${IMAGE_URL}${movie.poster_path}`}>
-                      <img src={`${IMAGE_URL}${movie.poster_path}`} alt=""/>
+                    <MovieWrapper background={movie.poster_path ? `${IMAGE_URL}${movie.poster_path}` : NoPoster}>
+                      <img src={movie.poster_path ? `${IMAGE_URL}${movie.poster_path}` : NoPoster} alt=""/>
                       <MovieMoreInfo>
                         More Info
                       </MovieMoreInfo>

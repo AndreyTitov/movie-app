@@ -13,6 +13,7 @@ export const Header = styled.div`
   color: ${(props) => props.theme.colors.mainBrandColor};
   position: absolute;
   width: 100%;
+  top: 0;
   z-index: 99;
   filter: drop-shadow(0 0 0.5rem ${(props) => props.theme.colors.darkGrey});
 `;
@@ -22,6 +23,8 @@ export const HeaderWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  max-width: 1400px;
+  margin: 0 auto;
 `;
 
 export const LogoWrapper = styled.div`
@@ -43,7 +46,7 @@ export const NavigationDesktopWrapper = styled.div`
 export const NavigationLinksList = styled.ul`
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-end;
   
   li {
     a {
@@ -57,7 +60,8 @@ export const NavigationLinksList = styled.ul`
 `;
 
 export const SearchBarWrapper = styled.div`
-  width: 20px;
+  max-width: 400px;
+  min-width: 200px;
 `;
 
 

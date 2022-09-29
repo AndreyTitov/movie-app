@@ -12,29 +12,20 @@ export const MovieContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
 
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: -50%;
-    width: 100%;
-    height: 100%;
-    background: ${(props) => props.theme.colors.mainBrandColor};
-    opacity: 0.4;
-    transform: rotate(140deg);
-    z-index: 1;
+  @media (min-width: 576px) {
+
   }
 
-  &:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 50%;
-    height: 100%;
-    background: ${(props) => props.theme.colors.darkGrey};
-    opacity: 0.4;
-    z-index: 1;
+  @media (min-width: 768px) {
+
+  }
+
+  @media (min-width: 992px) {
+    width: 760px;
+  }
+
+  @media (min-width: 1200px) {
+    width: 1000px;
   }
 `;
 
@@ -47,8 +38,21 @@ export const MovieTopWrapper = styled.div`
   margin: 0 auto;
   padding: 0 0 0 0;
   
+  @media (min-width: 576px) {
+
+  }
+  
+  @media (min-width: 768px) {
+
+  }
+  
   @media (min-width: 992px) {
     flex-direction: row;
+    width: 760px;
+  }
+  
+  @media (min-width: 1200px) {
+    width: 1000px;
   }
 `;
 
@@ -203,12 +207,15 @@ export const CreditsWrapper = styled.div`
 `;
 
 export const CastActorCardWrapper = styled.div`
-  width: 900px;
   margin: 0 auto;
 `;
 
-export const CastActorCard = styled.div`
+export const CastActorCardImageWrapper = styled.div`
+  width: 100%;
+  
   img {
+    width: 100%;
+    height: 100%;
     border-radius: 40px;
   }
 `;
