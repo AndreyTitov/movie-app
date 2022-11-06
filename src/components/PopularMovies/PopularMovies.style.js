@@ -84,6 +84,8 @@ export const MovieWrapper = styled.div`
   border-radius: 10px;
   overflow: hidden;
   position: relative;
+  transform: scale(calc(1 - 0.05));
+  transition: all .5s ease;
   
   &:before {
     content: '';
@@ -98,7 +100,25 @@ export const MovieWrapper = styled.div`
     transition: all .5s ease;
   }
   
+  a {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    color: ${(props) => props.theme.colors.white};
+    font-size: 20px;
+    z-index: 999;
+    opacity: 0;
+    display: none;
+    transition: opacity .5s ease;
+    text-decoration: none;
+  }
+  
   &:hover {
+    transform: scale(1);
+    
     &:before {
       content: '';
       position: absolute;
@@ -109,7 +129,7 @@ export const MovieWrapper = styled.div`
       transform: translate(-50%, -50%);
       z-index: 1;
       opacity: 1;
-      background: linear-gradient(-45deg, ${(props) => props.theme.colors.mainBrandColor}, ${(props) => props.theme.colors.backgroundColor}, ${(props) => props.theme.colors.mainBrandSecondaryColor});
+      //background: linear-gradient(-45deg, ${(props) => props.theme.colors.mainBrandColor}, ${(props) => props.theme.colors.backgroundColor}, ${(props) => props.theme.colors.mainBrandSecondaryColor});
       background-size: 100% 100%;
     }
     
@@ -118,25 +138,17 @@ export const MovieWrapper = styled.div`
       opacity: 1;
       color: ${(props) => props.theme.colors.white};
       transition: all .5s ease;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 999;
       
       &:hover {
         color: ${(props) => props.theme.colors.mainBrandColor};
       }
     }
-  }
-  
-  a {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: ${(props) => props.theme.colors.white};
-    font-size: 20px;
-    z-index: 2;
-    opacity: 0;
-    display: none;
-    transition: opacity .5s ease;
-    text-decoration: none;
   }
   
   &:hover {

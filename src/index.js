@@ -10,19 +10,21 @@ import * as serviceWorker from './serviceWorker';
 import { Auth0Provider } from '@auth0/auth0-react';
 
 ReactDOM.render(
-  <Auth0Provider
-    domain="dev-4mu262ce.us.auth0.com"
-    clientId="E8JpbYLDCZV5rq29LMbj0mkwmZHnmIBI"
-    redirectUri={'https://wallet.armenotech.dev/'}
-  >
-    <ThemeProvider theme={themes.default}>
-      <GlobalStyles />
-      <MobxProvider {...stores}>
-        <GlobalStyles/>
-        <App/>
-      </MobxProvider>
-    </ThemeProvider>
-  </Auth0Provider>,
+  <React.StrictMode>
+    <Auth0Provider
+      domain="dev-4mu262ce.us.auth0.com"
+      clientId="E8JpbYLDCZV5rq29LMbj0mkwmZHnmIBI"
+      redirectUri={'https://wallet.armenotech.dev/'}
+    >
+      <ThemeProvider theme={themes.default}>
+        <GlobalStyles />
+        <MobxProvider {...stores}>
+          <GlobalStyles/>
+          <App/>
+        </MobxProvider>
+      </ThemeProvider>
+    </Auth0Provider>
+  </React.StrictMode>,
   document.getElementById('root')
 );
 
