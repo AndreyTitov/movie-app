@@ -36,12 +36,12 @@ export const MovieWrapper = styled.div`
 `;
 
 export const MovieTopWrapper = styled.div`
-  height: 100vh;
+  height: calc(100vh - 100px);
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
-  padding: 0 0 0 0;
+  padding: 100px 20px 0 20px;
   background: url(${(props) => props.background}) center center no-repeat;
   background-size: cover;
   position: relative;
@@ -56,15 +56,22 @@ export const MovieTopWrapper = styled.div`
     opacity: 0.8;
     background: linear-gradient(-45deg, ${(props) => props.theme.colors.mainBrandColor}, ${(props) => props.theme.colors.backgroundColor}, ${(props) => props.theme.colors.mainBrandSecondaryColor});
   }
+  
+  @media (min-width: 992px) {
+    height: 100vh;
+    padding: 0;
+  }
 `;
 
 export const MovieTopRightColumn = styled.div`
   width: 100%;
   position: relative;
   z-index: 9;
+  display: none;
 
   @media (min-width: 992px) {
     width: 30%;
+    display: block;
   }
 `;
 
@@ -73,9 +80,11 @@ export const MovieTopLeftColumn = styled.div`
   color: ${(props) => props.theme.colors.white};
   position: relative;
   z-index: 9;
+  text-align: center;
 
   @media (min-width: 992px) {
     width: 70%;
+    text-align: left;
   }
 `;
 
@@ -154,9 +163,13 @@ export const MovieTagline = styled.p`
 
 export const MovieDescription = styled.p`
   font-size: 20px;
-  width: 80%;
+  width: 100%;
   margin-bottom: 20px;
   color: ${(props) => props.theme.colors.mainBrandColor};
+  
+  @Media (min-width: 992px) {
+    width: 80%;
+  }
 `;
 
 export const MovieGenresWrapper = styled.div`
@@ -170,6 +183,7 @@ export const MoviesLinksContainer = styled.div`
 export const MoviesLinksWrapper = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
 
   a {
     color: ${(props) => props.theme.colors.white};
@@ -186,6 +200,10 @@ export const MoviesLinksWrapper = styled.div`
         color: ${(props) => props.theme.colors.mainBrandSecondaryColor};
       }
     }
+  }
+  
+  @media (min-width: 992px) {
+    justify-content: start;
   }
 `;
 
@@ -213,6 +231,13 @@ export const MovieGenreWrapper = styled.div`
   display: flex;
   align-items: center;
   color: ${(props) => props.theme.colors.backgroundColor};
+  width: 100%;
+  flex-direction: row;
+  justify-content: center;
+  
+  @media (min-width: 992px) {
+    justify-content: start;
+  }
 `;
 
 export const MovieGenre = styled.div`

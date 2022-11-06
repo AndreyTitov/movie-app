@@ -8,5 +8,5 @@ const envs = {
     useBabelRc(),
   ),
 };
-console.log(useBabelRc());
+
 module.exports = envs;

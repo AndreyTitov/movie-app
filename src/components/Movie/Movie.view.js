@@ -133,7 +133,7 @@ const Movie = (props) => {
             </TooltipElement>
             <TooltipElement trigger="hover" placement="top" title="Visit movie in IMdB">
               <a
-                href={`https://www.imdb.com/title/${movieData.imdb_id}I?&autoplay=1`}
+                href={`https://www.imdb.com/title/${movieData.imdb_id}`}
                 target="_blank"
               >
                 <ImdbIcon/>
