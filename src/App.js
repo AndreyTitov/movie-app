@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import { compose } from 'recompose';
-import { Switch, BrowserRouter, Route } from 'react-router-dom';
+import { Switch, HashRouter, Route } from 'react-router-dom';
 import Loader from './common/components/Loader/Loader';
 import PopularMovies from './components/PopularMovies/PopularMovies.view';
 import Home from './components/Home/Home.view';
@@ -14,7 +14,7 @@ function App () {
   // const path = window.location.href || '';
 
   return (
-    <BrowserRouter basename={window.location.pathname || ''}>
+    <HashRouter>
       <Suspense fallback={<Loader/>}>
         <ScrollToTop />
         <Switch>
@@ -29,7 +29,7 @@ function App () {
           </Switch>
         </Switch>
       </Suspense>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
