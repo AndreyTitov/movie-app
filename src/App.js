@@ -11,7 +11,7 @@ import PrivateRoute from 'common/routes/Private.route';
 import ScrollToTop from 'common/components/Navigator/SrollTop';
 
 function App () {
-  const path = window.location.pathname || '';
+  const path = window.location.href || '';
 
   return (
     <BrowserRouter>
