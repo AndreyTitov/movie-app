@@ -11,19 +11,19 @@ import PrivateRoute from 'common/routes/Private.route';
 import ScrollToTop from 'common/components/Navigator/SrollTop';
 
 function App () {
-  const path = window.location.href || '';
+  // const path = window.location.href || '';
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={window.location.pathname || ''}>
       <Suspense fallback={<Loader/>}>
         <ScrollToTop />
         <Switch>
-          <Route exact path={path} component={Home}/>
-          <Route exact path={`${path}/login`} component={Login}/>
-          <Route exact path={`${path}/movies`} component={PopularMovies}/>
-          <Route exact path={`${path}/actors`} component={PopularActors}/>
+          <Route exact path={'/'} component={Home}/>
+          <Route exact path={`/login`} component={Login}/>
+          <Route exact path={`/movies`} component={PopularMovies}/>
+          <Route exact path={`/actors`} component={PopularActors}/>
           <Switch>
-            <Route path={`${path}/movies/:movieId`}>
+            <Route path={`/movies/:movieId`}>
               <Movie/>
             </Route>
           </Switch>
