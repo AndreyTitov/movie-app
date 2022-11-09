@@ -12,7 +12,7 @@ import ScrollToTop from 'common/components/Navigator/SrollTop';
 
 function App () {
   return (
-    <BrowserRouter basename={`${window.local.href}${window.location.pathname}` || ''}>
+    <BrowserRouter basename={window.location.pathname || ''}>
       <Suspense fallback={<Loader/>}>
         <ScrollToTop />
         <Switch>
